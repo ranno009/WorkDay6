@@ -25,9 +25,38 @@ Public Class Form1
         C = CDbl(Cst)
         D = CDbl(Dst)
 
-        ' Please write your code here...
+        txtResult.Text = FindIntersection(A, B, C, D)
 
-        txtResult.Text = "Not implemented yet"
+       
     End Sub
+    Function FindIntersection(A As Double,
+                              B As Double,
+                              C As Double,
+                              D As Double) As String
+        'Guarantee there is no intersection
+        Dim result As String
+        If B < C Or D < A Then
+            result = txtResult.Text
+            txtResult.Text = "They do not intersect"
 
+        Else
+            Dim begPoint As Double
+            begPoint = Math.Max(A, C)
+
+            Dim endPoint As Double
+            endPoint = Math.Min(B, D)
+
+            txtResult.Text = "There is an intersection from " & begPoint & " to " & endPoint
+        End If
+
+        'Solve where the intersection is, Why won't this code work, with all the different cases being listed
+
+        'Dim intersection As String
+        'If A < C And D < B Then
+        'intersection = txtResult.Text
+        'txtResult.Text = "There is an intersection from" & C & " to" & D
+
+        Return txtResult.Text
+
+    End Function
 End Class
